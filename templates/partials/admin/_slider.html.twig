@@ -1,9 +1,8 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">PHARMA</span>
+    <a href="index3.html" class="brand-link text-center">
+        <span class="brand-text font-weight-light">PHARMACO</span>
     </a>
 
     <!-- Sidebar -->
@@ -14,7 +13,7 @@
                 <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Nom d'utilisateur</a>
+                <a href="#" class="d-block">{{ app.user.name | default('') }}</a>
             </div>
         </div>
 
@@ -80,6 +79,14 @@
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Gestion des livraisons
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('admin_show',{id: app.user.id | default(0)}) }}" class="nav-link">
+                        <i class="nav-icon fas fa-user-circle"></i>
+                        <p>
+                            Profil
                         </p>
                     </a>
                 </li>

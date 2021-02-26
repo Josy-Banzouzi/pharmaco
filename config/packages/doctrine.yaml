@@ -16,3 +16,7 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
+
+        dql:
+            string_functions:
+                MATCH_AGAINST: App\Extensions\Doctrine\MatchAgainst

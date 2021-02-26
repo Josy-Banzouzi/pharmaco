@@ -8,15 +8,30 @@
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+            <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}">
+            <link rel="stylesheet" href="{{  asset('css/admin/adminlte.min.css')}}">
         {% endblock %}
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            <script src="{{ asset('js/admin/jquery.min.js') }}"></script>
+            <script src="{{ asset('js/admin/bootstrap.bundle.js') }}" ></script>
+            <script src="{{ asset('js/admin/adminlte.min.js') }}"></script>
            {% endblock %}
     </head>
-    <body>
-        {% block body %}
+    <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        {{ include('partials/admin/_header.html.twig') }}
+        {{ include('partials/admin/_slider.html.twig') }}
+        <div class="content-wrapper">
+            {{ include('partials/admin/_page_header.html.twig') }}
+            <div class="content">
+                {% block body %}
 
-        {% endblock %}
+                {% endblock %}
+            </div>
+        </div>
+        {{ include('partials/admin/_footer.html.twig') }}
+    </div>
     </body>
 </html>

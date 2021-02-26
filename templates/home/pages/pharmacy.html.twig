@@ -2,7 +2,47 @@
 
 {% block title '' %}
 
-
 {% block body %}
+    <div>
+        <img src="{{ asset('build/images/port05.5e69a287.jpg') }}" class="img-responsive img-fluid" alt="{{ pharmacy.name }}" width="100%" style="height: 400px;">
+    </div>
 
+    <div class="container">
+
+        <div class="row justify-content-center mt-5 mb-5">
+            <div class="rounded bg-white col-sm-5">
+                <h4 class="text-center mt-3">Passer une commande ou obtenir une information</h4>
+                <div class="pb-3 pl-3 pr-3 pt-3">
+                            {{ form_start(command) }}
+                            <div class="form-group">
+                                <input type="hidden" name="{{command.pharmacy.vars.full_name}}" value="{{ pharmacy.id | default('')}}">
+                                {% do command.pharmacy.setRendered %}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ command.name.vars.id }}"> Votre nom</label>
+                                <input type="text" name="{{ command.name.vars.full_name }}" class="form-control mr-2" id="{{ command.name.vars.id }}">
+                                {% do command.name.setRendered %}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ command.email.vars.id }}">Addresse E-mail</label>
+                                <input type="email" name="{{ command.email.vars.full_name }}" class="form-control mr-2" id="{{ command.email.vars.id }}">
+                                {% do command.email.setRendered %}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ command.product.vars.id }}">Nom(s) du produit</label>
+                                <textarea rows="6" name="{{ command.product.vars.full_name }}" class="form-control mr-2" id="{{ command.product.vars.id }}">
+
+                                </textarea >
+                                {% do command.product.setRendered %}
+                            </div>
+
+                            <div class="row justify-content-center mt-3">
+                                <button type="submit" class="btn btn-primary">Valider</button>
+                            </div>
+                            {{ form_end(command) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+    {{ include('partials/home/_footer.html.twig') }}
 {% endblock %}

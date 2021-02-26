@@ -15,10 +15,7 @@ class ProductType extends AbstractType
             ->add('name')
             ->add('price')
             ->add('quantity')
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add('pharmacy')
-            ->add('pharmacies')
         ;
     }
 

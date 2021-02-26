@@ -1,0 +1,41 @@
+<div class="col-8">
+    <div class="card card card-outline card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Medicaments et prix</h3>
+        </div>
+        <div class="card-body">
+            <!-- start form -->
+            <div class="row">
+                <div class="form-inline">
+                    {{ form_start(product) }}
+                    <div class="form-group">
+                        <input type="hidden" name="{{product.pharmacy.vars.full_name}}" value="{{ app.user.id | default('')}}">
+                        {% do product.pharmacy.setRendered %}
+                    </div>
+                    <div class="form-group" style="display: inline-block;">
+                        <label for="{{ product.name.vars.id }}" style="display: block;"> Nom du produit</label>
+                        <input type="text" name="{{ product.name.vars.full_name }}" class="form-control mr-2" id="{{ product.name.vars.id }}" style="width: 250px;" placeholder="Nom du produit">
+                        {% do product.name.setRendered %}
+                    </div>
+
+                    <div class="form-group" style="display: inline-block;">
+                        <label for="{{ product.price.vars.id }}" style="display: block;"> Prix du produit </label>
+                        <input type="text" name="{{ product.price.vars.full_name }}" class="form-control mr-2" id="{{ product.price.vars.id }}" style="width: 150px;" placeholder="prix du produit">
+                        {% do product.price.setRendered %}
+                    </div>
+
+                    <div class="form-group" style="display: inline-block;">
+                        <label for="{{ product.quantity.vars.id }}" style="display: block;"> Quantite</label>
+                        <input type="number" name="{{ product.quantity.vars.full_name }}" class="form-control mr-2" id="{{ product.quantity.vars.id }}" style="width: 100px;" placeholder="Quantite">
+                        {% do product.quantity.setRendered %}
+                    </div>
+
+                    <div class="mt-4" style="display: inline-block">
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </div>
+                    {{ form_end(product) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

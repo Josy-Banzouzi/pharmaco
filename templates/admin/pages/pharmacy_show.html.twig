@@ -1,0 +1,17 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title 'show your informations'%}
+
+{% block body %}
+
+
+
+    <a href="{{ path('admin_edit', {id: pharmacy.id}) }}" >Edit</a>
+    <a href="#" onclick="event.preventDefault();
+    confirm('if you delete your profil all your informations are going to be delete. Are you sure to do it')
+     && document.getElementById('pharmacy-delete').submit();"></a>
+
+    <form id="pharmacy-delete" action="{{ path('admin_delete', {id: pharmacy.id}) }}" method="post" style="display: none;">
+        <input type="hidden" name="_method" value="DELETE">
+    </form>
+{% endblock %}
