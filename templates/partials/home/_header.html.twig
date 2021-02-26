@@ -1,0 +1,30 @@
+<div id="headerwrap">
+    <div class="container">
+        <div class="row centered">
+                <div class="form-inline ml-3">
+                    {{ form_start(search) }}
+                    <div class="form-group">
+                        <input class="form-control" name="{{ search.mots.vars.full_name }}" type="search" placeholder="Recherche produit" aria-label="Search" style="width: 500px;">
+                        {% do search.mots.setRendered %}
+                        <div class="input-group-append">
+                            <button class="btn btn-navbar" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    {{ form_end(search) }}
+                </div>
+
+        <div class="row centered">
+            <div class="col-lg-8 col-lg-offset-2 mt">
+                <h1 class="animation slideDown">We are a digital creative agency. We focus on design, consulting, and technology.</h1>
+                <p class="mt">
+                    <a href="{{ path('app_register') }}" class="btn btn-cta btn-lg">CREER UNE PHARMACIE</a>
+                    <a href="{{ path('app_login') }}" class="btn btn-cta btn-lg">CONNEXION</a>
+                </p>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>

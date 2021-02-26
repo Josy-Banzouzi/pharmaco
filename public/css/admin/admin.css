@@ -1,0 +1,18 @@
+
+.my-custom-scrollbar{
+    position: relative;
+    overflow: auto;
+    height: 400px;
+    display: -moz-groupbox;
+}
+
+.table-wrapper-scroll-y{
+    display: block;
+}
+.table-commande{
+    position: relative;
+    overflow: auto;
+    height: 400px;
+    display: -moz-groupbox;
+    display: block;
+}

@@ -1,0 +1,114 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title 'traitement de commande' %}
+
+{% block body %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4">
+                    <div class="card card card-outline card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Commmande a traiter</h3>
+                        </div>
+                        <div class="card-body">
+                            <select name="" id="" class="form-control form-control-sm">
+                                <option value="">test</option>
+                                <option value="">test 2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-8">
+                    <div class="card card card-outline card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Medicaments et prix</h3>
+                        </div>
+                        <div class="card-body">
+                            <!-- start form -->
+                         <div class="row">
+                             <div class="form-inline">
+                                 {{ form_start(product) }}
+                                 <div class="form-group">
+                                     <input type="hidden" name="{{product.pharmacy.vars.full_name}}" value="{{ app.user.id | default('0')}}">
+                                     {% do product.pharmacy.setRendered %}
+                                 </div>
+                                 <div class="form-group" style="display: inline-block;">
+                                     <label for="{{ product.name.vars.id }}" style="display: block;"> Nom du produit</label>
+                                     <input type="text" name="{{ product.name.vars.full_name }}" class="form-control mr-2" id="{{ product.name.vars.id }}" style="width: 250px;" placeholder="Nom du produit">
+                                     {% do product.name.setRendered %}
+                                 </div>
+
+                                 <div class="form-group" style="display: inline-block;">
+                                     <label for="{{ product.price.vars.id }}" style="display: block;"> Prix du produit </label>
+                                     <input type="text" name="{{ product.price.vars.full_name }}" class="form-control mr-2" id="{{ product.price.vars.id }}" style="width: 150px;" placeholder="prix du produit">
+                                     {% do product.price.setRendered %}
+                                 </div>
+
+                                 <div class="form-group" style="display: inline-block;">
+                                     <label for="{{ product.quantity.vars.id }}" style="display: block;"> Quantite</label>
+                                     <input type="number" name="{{ product.quantity.vars.full_name }}" class="form-control mr-2" id="{{ product.quantity.vars.id }}" style="width: 100px;" placeholder="Quantite">
+                                     {% do product.quantity.setRendered %}
+                                 </div>
+
+                                 <div class="mt-4" style="display: inline-block">
+                                     <button type="submit" class="btn btn-primary">Ajouter</button>
+                                 </div>
+                                 {{ form_end(product) }}
+                             </div>
+                         </div>
+
+                            <!-- end form -->
+
+                            <!--search product-->
+
+                            <div class="mt-5">
+                                <div class="row">
+                                    <div class="form-inline">
+                                        {{ form_start(search) }}
+                                        <div class="form-group">
+                                            <input class="form-control" name="{{ search.mots.vars.full_name }}" type="search" placeholder="Recherche produit" aria-label="Search">
+                                            {% do search.mots.setRendered %}
+                                        <div class="ml-2">
+                                            <button class="btn btn-primary" type="submit">
+                                                Search
+                                            </button>
+                                        </div>
+                                        {{ form_end(search) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- end search product-->
+
+                            <!--start table -->
+                            <div class="mt-3 table-wrapper-scroll-y my-custom-scrollbar">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Nom du Produit</th>
+                                        <th>Prix du Produit</th>
+                                        <th>Quantite</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for product in app.user.products | default('0')%}
+                                        <tr>
+                                            <td>{{ product.name }}</td>
+                                            <td>{{ product.price }}</td>
+                                            <td>{{ product.quantity }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- end table -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+{% endblock %}
